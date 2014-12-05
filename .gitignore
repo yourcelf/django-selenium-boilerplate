@@ -1,0 +1,7 @@
+# Editor trash/compiled files
+*.pyc
+*.swp
+.DS_Store*
+deploy.sh
+*.egg-info/
+dist
