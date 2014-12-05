@@ -28,7 +28,7 @@ Example::
     class MyTestCase(SeleniumBase):
         def test_home(self):
             # Look up the route named "home"
-            self.selenium.get(self.selenium.url("home"))
+            self.selenium.get(self.url("home"))
             # Pause until the selector "h1" appears
             self.await_selector("h1")
             self.assertEquals(self.by_css("h1").text, "Hello, World")
