@@ -9,7 +9,7 @@ from selenium.webdriver.support.ui import Select
 class SeleniumBase(LiveServerTestCase):
     @classmethod
     def setUpClass(cls):
-        super(SeleniumBase, cls).setupClass()
+        super(SeleniumBase, cls).setUpClass()
         if hasattr(settings, "SELENIUM_FIREFOX_BIN"):
             if not os.path.exists(settings.SELENIUM_FIREFOX_BIN):
                 raise OSError("Firefox binary '%s' missing." % (settings.SELENIUM_FIREFOX_BIN))
