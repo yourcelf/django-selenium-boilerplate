@@ -1,3 +1,4 @@
+import os
 import time
 from django.conf import settings
 from django.test import LiveServerTestCase
@@ -5,6 +6,9 @@ from django.core.urlresolvers import reverse
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.support.ui import Select
+
+if "DJANGO_LIVE_TEST_SERVER_ADDRESS" not in os.environ:
+    os.environ["DJANGO_LIVE_TEST_SERVER_ADDRESS"] = "localhost:7001-7999"
 
 class SeleniumBase(LiveServerTestCase):
     @classmethod
