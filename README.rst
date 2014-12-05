@@ -3,9 +3,8 @@ Django Selenium Boilerplate
 
 A simple boilerplate app for selenium testing in Django with ``LiveServerTestCase``.
 
-Installation
-------------
-::
+Installation::
+
     pip install django-selenium-boilerplate
 
 Usage
@@ -22,9 +21,8 @@ This app provides a ``SeleniumBase`` class that extends ``LiveServerTestCase``. 
 Optional setting:
 - ``SELENIUM_FIREFOX_BIN``: Optional path to the firefox binary to use when building the Selenium driver.  Use this to constrain to a particular selenium-supported Firefox release.
 
-Example
--------
-::
+Example::
+
     from selenium_boilerplate import SeleniumBase
 
     class MyTestCase(SeleniumBase):
