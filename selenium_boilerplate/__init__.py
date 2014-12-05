@@ -18,7 +18,7 @@ class SeleniumBase(LiveServerTestCase):
         else:
             cls.selenium = WebDriver()
         cls.selenium.set_window_size(1024, 768)
-        cls.selneium.set_page_load_timeout(30)
+        cls.selenium.set_page_load_timeout(30)
         super(SeleniumBase, cls).setUpClass()
 
     @classmethod
