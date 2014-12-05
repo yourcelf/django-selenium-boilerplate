@@ -1,16 +1,20 @@
 import os
 import time
 from django.conf import settings
-from django.test import LiveServerTestCase
 from django.core.urlresolvers import reverse
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.support.ui import Select
 
+try:
+    from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+except ImportError:
+    from djanto.test import LiveServerTestCase as StaticLiveServerTestCase
+
 if "DJANGO_LIVE_TEST_SERVER_ADDRESS" not in os.environ:
     os.environ["DJANGO_LIVE_TEST_SERVER_ADDRESS"] = "localhost:7001-7999"
 
-class SeleniumBase(LiveServerTestCase):
+class SeleniumBase(StaticLiveServerTestCase):
     @classmethod
     def setUpClass(cls):
         super(SeleniumBase, cls).setUpClass()
@@ -34,7 +38,7 @@ class SeleniumBase(LiveServerTestCase):
         if route.startswith("/"):
             return u'%s%s' % (self.live_server_url, route)
         else:
-            return u'%s%s' % (self.live_server_url, reverse(route, *args, **kwargs))
+            return u'%s%s' % (self.live_server_url, reverse(route, args=args, kwargs=kwargs))
     
     def by_css(self, name):
         """
